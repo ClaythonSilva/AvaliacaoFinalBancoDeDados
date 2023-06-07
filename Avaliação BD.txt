@@ -1,0 +1,54 @@
+1) Mostre todos os clientes armazenados no sistema.
+
+SELECT * 
+FROM CLIENTE;
+
+
+2) Exiba os veículos que tenham final 3 no número da placa.
+
+SELECT placa
+FROM VEÍCULO
+WHERE placa like "3";
+
+
+3) Mostre os clientes que residem no RS e que não possuam telefone.
+
+SELECT endereco, telefone
+FROM CLIENTE
+WHERE endereco like "RS" and 
+TELEFONE like "NULL";
+
+
+
+4) Exiba o código dos clientes que alugaram veículos por mais de 90 dias.
+SELECT cnh, duracao
+FROM CLIENTE, CONTRATOALUGUEL
+WHERE duracao >= 90
+ORDER BY duracao;
+
+
+
+5) Quantos veículos há cadastrados no sistema.
+SELECT count(*)
+FROM VEÍCULO;
+
+
+
+6) Mostre o veículo alugado por Alexandre Zamberlan.
+SELECT nome, *
+FROM CLIENTE, VEÍCULO
+WHERE nome = 'Alexandre Zamberlan';
+
+
+
+7) Mostre os clientes e os escritórios associados no contrato de aluguel.
+SELECT cliente.nome as nome_cliente, escritorio.local, escritorio.numero
+FROM CONTRATOALUGUEL
+JOIN CLIENTE ON contratoaluguel.cnh_cliente = cliente.cnh
+JOIN ESCRITORIO ON contratoaluguel.numeroescritorio = escritorio.numero
+WHERE contratoaluguel.numero = 1;
+
+
+
+
+
